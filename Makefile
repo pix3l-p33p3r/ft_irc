@@ -1,13 +1,15 @@
 CC = c++
-CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -g -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -Ofast
+
+CXXFLAGS += -g -fsanitize=address -fsanitize=leak -fsanitize=undefined
 
 NAME = ircserv
 
-SRC =	main.cpp \
-		Server.cpp \
-		Client.cpp \
-		Channel.cpp \
-		server_commands.cpp
+SRC =	src/main.cpp \
+		src/Server.cpp \
+		src/Client.cpp \
+		src/Channel.cpp \
+		src/server_commands.cpp
 obj_dir = obj
 OBJ = $(addprefix $(obj_dir)/, $(SRC:.cpp=.o))
 
